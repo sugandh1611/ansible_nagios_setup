@@ -10,7 +10,7 @@
    count: 1
    wait: yes
    vpc_subnet_id: "{{ subnet_id }}"
-   group_id: "{{ sg_id }}"
+   group_id: "{{ group_id }}"
    instance_tags:
      Name: nagios_core
    assign_public_ip: yes
@@ -25,7 +25,7 @@
    count: 1
    wait: yes
    vpc_subnet_id: "{{ subnet_id }}"
-   group_id: "{{ sg_id }}"
+   group_id: "{{ group_id }}"
    instance_tags:
      Name: nagios_client
    assign_public_ip: yes
