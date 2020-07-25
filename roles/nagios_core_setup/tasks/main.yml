@@ -59,20 +59,15 @@
          path: /etc/nagios/servers
          state: directory 
 
-- name: Copy nagios-client.cfg file
-      copy:
-        dest: /etc/nagios/servers/nagios-client.cfg
-        src: nagios-client.cfg
-        remote_src: no 
-
- - name: Configure server to monitor clients
-      template: src=nagios-clients.j2 
-        dest: /etc/nagios/servers/clients.conf 
+- name: Configure server to monitor clients
+      template: 
+        src: nagios-client.j2 
+        dest: /etc/nagios/servers/nagios-client.cfg 
         owner: nagios 
         group: nagios 
         mode: 755
 
-    - name: Restart nagios on server to use new configuration
+- name: Restart nagios on server to use new configuration
       service: 
         name: nagios 
         state: restarted
