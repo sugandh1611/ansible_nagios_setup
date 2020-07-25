@@ -1,0 +1,8 @@
+---
+ key_name: ""  #Enter the key-pair with which you will launch the ec2 instance. Ex:nagios
+ ec2_region: ""  #Enter the region in which you will create the server
+ instance_type: ""  #Enter the instance type. Ex:t2.small
+ image_id: "" #Enter the ami-id of amazon-linux
+ subnet_id: ""  #Enter the subnet id
+ sg_id: ""  #Enter the security group ID
+ sshpath: ""  #Enter the path where key-pair lies on local. Ex:/home/.ssh/nagios.pem
