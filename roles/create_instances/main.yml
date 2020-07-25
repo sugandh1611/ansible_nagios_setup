@@ -1,0 +1,31 @@
+- pip:
+   name: boto
+- ec2:
+   key_name: "{{ key_name }}"
+   ec2_region: "{{ ec2_region }}"
+   ec2_access_key: "{{ access_key }}"
+   ec2_secret_key: "{{ secret_key }}"
+   instance_type: "{{ instance_type }}"
+   image: "{{ image_id }}"
+   count: 1
+   wait: yes
+   vpc_subnet_id: "{{ subnet_id }}"
+   group_id: "{{ sg_id }}"
+   instance_tags:
+     Name: nagios_core
+   assign_public_ip: yes
+
+- ec2:
+   key_name: "{{ key_name }}"
+   ec2_region: "{{ ec2_region }}"
+   ec2_access_key: "{{ access_key }}"
+   ec2_secret_key: "{{ secret_key }}"
+   instance_type: "{{ instance_type }}"
+   image: "{{ image_id }}"
+   count: 1
+   wait: yes
+   vpc_subnet_id: "{{ subnet_id }}"
+   group_id: "{{ sg_id }}"
+   instance_tags:
+     Name: nagios_client
+   assign_public_ip: yes

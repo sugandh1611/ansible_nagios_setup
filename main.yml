@@ -1,0 +1,32 @@
+- hosts: localhost
+  vars_prompt:
+       - name: "access_key"
+         prompt: "Enter the access key"
+         private: no
+       - name: "secret_key"
+         prompt: "Enter the secret key"
+         private: no   
+  roles:
+       - role: create_instances
+
+  tasks:
+       - name: Get IPs
+         command: python IP.py
+       - name: Wait for EC2 instance
+         wait_for: timeout=200
+       - name: Checking for ansible connectivity
+         command: ansible -m ping all
+
+###############
+
+- hosts: nagios_client
+  roles:
+       - role: nagios_client_setup
+
+################
+
+- hosts: nagios_core
+  roles:
+       - role: nagios_core_setup
+
+###############
