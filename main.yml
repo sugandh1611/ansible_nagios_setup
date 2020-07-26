@@ -1,6 +1,0 @@
-- hosts: nagios_core
-  become: true
-  vars_files:
-     - roles/nagios_core_setup/vars/main.yml
-  roles:
-       - role: 'roles/nagios_core_setup'

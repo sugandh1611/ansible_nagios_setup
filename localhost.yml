@@ -23,18 +23,3 @@
          wait_for: timeout=30
        - name: Checking for ansible connectivity
          command: ansible -m ping all
-
-- hosts: nagios_client
-  become: true
-  vars_files:
-     - roles/nagios_client_setup/vars/main.yml
-  roles:
-       - role: 'roles/nagios_client_setup'
-
-
-- hosts: nagios_core
-  become: true
-  vars_files:
-     - roles/nagios_core_setup/vars/main.yml
-  roles:
-       - role: 'roles/nagios_core_setup'

@@ -8,6 +8,9 @@
   yum:
     name: /home/ec2-user/epel-release-latest-7.noarch.rpm
     state: present
+  
+- name: Install remi
+  command: rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 - name: Install Nagios-Core packages.
   yum:
@@ -37,26 +40,33 @@
 #  command: echo vm.swappiness = 0 >> /etc/sysctl.conf && sysctl -p
 #  become: yes
 
-- name: Copy nagios.cfg file
-  copy:
-    dest: /etc/nagios/nagios.cfg
-    src: nagios.cfg
-    remote_src: no
+- name: Enable servers in nagios.cfg
+  lineinfile:
+    path: /etc/nagios/nagios.cfg
+    regexp: '#cfg_dir=/etc/nagios/servers'
+    line: cfg_dir=/etc/nagios/servers
 
 - name: Make servers directory
   file:
     path: /etc/nagios/servers
-    state: directory 
+    state: directory
 
 - name: Configure server to monitor clients
   template: 
     src: nagios-client.j2 
-    dest: /etc/nagios/servers/nagios-client.cfg 
-    owner: nagios 
-    group: nagios 
-    mode: 755
+    dest: /etc/nagios/servers/client.cfg 
+
+- name: Change file ownership, group and permissions to nagios
+  command: chown -R nagios. /etc/nagios/
 
 - name: Restart nagios on server to use new configuration
   service: 
     name: nagios 
     state: restarted
+
+- name: Restart httpd to start nagios monitoring
+  service:
+    name: nagios
+    state: restarted
+
+

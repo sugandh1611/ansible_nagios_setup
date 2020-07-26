@@ -27,7 +27,7 @@
     - nrpe
   become: yes
 
-- name: lalalla
+- name: Add client IP in nrpe conf file.
   lineinfile: 
     path: /etc/nagios/nrpe.cfg
     regexp: 'allowed_hosts='
