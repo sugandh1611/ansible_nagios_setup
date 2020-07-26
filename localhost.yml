@@ -1,15 +1,12 @@
 - hosts: localhost
-  become: true
   vars_files:
      - vars/main.yml
  
   vars_prompt:
        - name: "access_key"
          prompt: "Enter the access key"
-         private: no
        - name: "secret_key"
          prompt: "Enter the secret key"
-         private: no
  
   roles:
        - role: 'roles/create_instances'
@@ -19,7 +16,5 @@
          wait_for: timeout=180
        - name: Get IPs
          command: python ip_grep.py {{ec2_region}}
-       - name: Wait for EC2 instance
-         wait_for: timeout=30
        - name: Checking for ansible connectivity
          command: ansible -m ping all
