@@ -40,3 +40,5 @@ With the help of these Ansible Scripts, you can:
 4. You will get a prompt to enter the IAM credentials i.e access-key and secret-key. 
 5. Once the playbook is completed. Go to browser ->  <nagios_core_IP>/nagios 
 6. Use default nagios credentials.
+
+NOTE: Remove hosts file, content of roles/nagios_core_setup/vars/main.yml and roles/nagios_client_setup/vars/main.yml before rerunning execute.sh to avoid errors.
