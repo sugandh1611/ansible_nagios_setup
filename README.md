@@ -35,10 +35,8 @@ With the help of these Ansible Scripts, you can:
 * Security group ID
 * SSH Path (Path where the keypair exists on your local machine)
 
-3. GitLab recovery is only possible if the installed version matches the version of the GitLab backup. We can choose the version of GitLab-CE that has to be installed by editing /gitlab/roles/ansible-role-gitlab/defaults/main.yml file.
+3. Run execute.sh ->  ./execute.sh
 
-4. Run execute.sh ->  ./execute.sh
-
-5. You will get a prompt to enter the IAM credentials i.e access-key and secret-key. 
-6. Once the playbook is completed. Go to browser ->  <nagios_core_IP>/nagios 
-7. Use default nagios credentials.
+4. You will get a prompt to enter the IAM credentials i.e access-key and secret-key. 
+5. Once the playbook is completed. Go to browser ->  <nagios_core_IP>/nagios 
+6. Use default nagios credentials.
